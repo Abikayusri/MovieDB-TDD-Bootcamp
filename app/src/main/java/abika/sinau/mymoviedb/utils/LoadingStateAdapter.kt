@@ -8,7 +8,9 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class LoadingStateAdapter : LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {
+class LoadingStateAdapter(
+    private val retry: () -> Unit
+) : LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,12 +25,18 @@ class LoadingStateAdapter : LoadStateAdapter<LoadingStateAdapter.LoadingStateVie
         holder.bind(loadState)
     }
 
-    class LoadingStateViewHolder(private val binding: ItemLoadingStateBinding) :
+    inner class LoadingStateViewHolder(private val binding: ItemLoadingStateBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(loadState: LoadState) {
             binding.apply {
-                pbLoading.isVisible = loadState is LoadState.Loading
+                pbLoading.isVisible =
+                    loadState is LoadState.Loading || loadState.endOfPaginationReached
+
+                tvErrorState.isVisible =
+                    loadState is LoadState.Error && loadState !is LoadState.Loading
+                btnRetry.isVisible = loadState is LoadState.Error && loadState !is LoadState.Loading
+                btnRetry.setOnClickListener { retry.invoke() }
             }
         }
     }

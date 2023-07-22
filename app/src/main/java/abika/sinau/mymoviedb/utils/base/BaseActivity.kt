@@ -1,19 +1,15 @@
 package abika.sinau.mymoviedb.utils.base
 
 import abika.sinau.mymoviedb.utils.exception.ErrorStateHandler
-import abika.sinau.mymoviedb.utils.exception.HandleableException
-import abika.sinau.mymoviedb.utils.exception.error_state_handler.ErrorHandlerProvider
 import abika.sinau.mymoviedb.utils.exception.error_state_handler.ErrorHandlerProviderImpl
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : ErrorHandlerProvider,
-    AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity() {
 
     abstract val viewModel: VM
 
@@ -35,10 +31,9 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : ErrorHandlerProv
     protected fun handleErrorApiState(
         throwable: Throwable,
         anchor: View? = null,
-        onHandleableError: (error: HandleableException) -> Unit
+        onHandleableError: () -> Unit
     ) {
         ErrorStateHandler.handleErrorState(
-            activity = this,
             throwable = throwable,
             onHandleableException = onHandleableError,
             onGeneralException = {
