@@ -4,4 +4,6 @@
     <string name="no_internet_error_message">Jaringan tidak stabil, silahkan periksa pengaturan jaringan</string>
     <string name="something_went_wrong_message">Terjadi kesalahan</string>
     <string name="something_went_wrong_try_again_message">Terjadi kesalahan, silahkan coba beberapa saat lagi</string>
+    <string name="label_popular_movie">Popular Movie</string>
+    <string name="label_all_movie">All Movie</string>
 </resources>

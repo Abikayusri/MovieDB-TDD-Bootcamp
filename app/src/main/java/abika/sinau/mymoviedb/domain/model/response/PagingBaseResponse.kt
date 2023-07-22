@@ -7,6 +7,6 @@ open class PagingBaseResponse<T> {
     val totalPages: Int? = null
     @SerializedName("results")
     val results: List<T>? = null
-    @SerializedName("id")
-    val id: Int? = null
+    @SerializedName("page")
+    val page: Int? = null
 }

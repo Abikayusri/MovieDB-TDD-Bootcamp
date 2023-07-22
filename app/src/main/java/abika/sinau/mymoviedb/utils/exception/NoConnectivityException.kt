@@ -1,4 +1,4 @@
-package abika.sinau.core.utils.handle_exception
+package abika.sinau.mymoviedb.utils.exception
 
 import java.io.IOException
 

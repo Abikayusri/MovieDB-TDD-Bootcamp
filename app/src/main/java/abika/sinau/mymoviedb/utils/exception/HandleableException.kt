@@ -1,3 +1,3 @@
 package abika.sinau.mymoviedb.utils.exception
 
-class ServerErrorException: Exception()
+abstract class HandleableException: Exception()

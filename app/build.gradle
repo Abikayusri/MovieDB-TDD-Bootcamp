@@ -19,6 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField "String", "API_KEY", "\"b64d761def5c00e40e6a36e0032741bf\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
         buildConfigField "String", "IMAGE_PATH", "\"https://image.tmdb.org/t/p/original\""
         buildConfigField "String", "BACKDROP_PATH", "\"https://image.tmdb.org/t/p/w500\""
@@ -53,6 +54,7 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.7.2"
     implementation "androidx.fragment:fragment-ktx:1.6.0"
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -88,6 +90,6 @@ dependencies {
     // Glide
     implementation "com.github.bumptech.glide:glide:4.12.0"
 
-    // Timber
-    implementation "com.jakewharton.timber:timber:5.0.1"
+    // Shimmer
+    implementation "com.facebook.shimmer:shimmer:0.5.0"
 }
